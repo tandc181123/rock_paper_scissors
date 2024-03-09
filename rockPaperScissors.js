@@ -2,14 +2,16 @@ let playRound = (playerSelection, computerSelection) => {
     const selections = ['rock', 'paper', 'scissors'];
     const winning = `You Win! ${playerSelection} beats ${computerSelection}.`;
     
-    if ((selections.includes(playerSelection)) && (selections.includes(computerSelection))) {
+    if ((selections.includes(playerSelection)) && 
+        (selections.includes(computerSelection))) {
+
         if (playerSelection === computerSelection) {
             return "It's a tie!";
-        } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-            return winning;
-        } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-            return winning;
-        } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        } else if (
+            (playerSelection === 'rock' && computerSelection === 'scissors') ||
+            (playerSelection === 'scissors' && computerSelection === 'paper') ||
+            (playerSelection === 'paper' && computerSelection === 'rock')
+        ) {
             return winning;
         } else {
             return `You Lose! ${computerSelection} beats ${playerSelection}.`;
@@ -48,7 +50,11 @@ let playGame = () => {
             continue;
         }
 
-        let combatSituation = `Round ${i + 1} player: ${userChoice} computer: ${computerChoice} \n${gameResult} \nThe score is player: ${playersScore} vs computer: ${computersScore}`;
+        let combatSituation = `Round ${i + 1} player: ${userChoice} `
+                            + `computer: ${computerChoice} \n`
+                            + `${gameResult} \n`
+                            + `The score is player: ${playersScore} `
+                            + `vs computer: ${computersScore}`;
         console.log(combatSituation);
     }
     
